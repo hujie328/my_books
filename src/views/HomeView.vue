@@ -8,11 +8,12 @@
       </nav>
     </head>
     <router-view />
+    <snowflake></snowflake>
   </div>
 </template>
 
 <script setup>
-// @ is an alias to /src
+import snowflake from '@/components/snowflake.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -22,6 +23,8 @@ nav {
 }
 .home {
   width: 100%;
+  min-height: 100vh;
+
   &::before {
     content: "";
     position: fixed;

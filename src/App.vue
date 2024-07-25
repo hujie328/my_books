@@ -6,4 +6,9 @@
 import HomeView from "@/views/HomeView.vue";
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+*{
+    padding: 0;
+    margin: 0;
+}
+</style>
