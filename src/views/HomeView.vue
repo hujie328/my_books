@@ -3,7 +3,6 @@
     <head>
       <nav>
         <div class="nav_bar">
-          <el-button type="primary">Primary</el-button>
         </div>
       </nav>
     </head>

@@ -1,7 +1,10 @@
 # my_books
 
+
+
 ## Project setup
 ```
+node -v >14.19.0
 npm install
 ```
 
