@@ -1,8 +1,8 @@
 @font-face {
     font-family: "iconfont"; /* Project id 4638676 */
-    src: url('./font_4638676_9lzidiiof6s.woff2') format('woff2'),
-         url('./font_4638676_9lzidiiof6s.woff') format('woff'),
-         url('./font_4638676_9lzidiiof6s.ttf') format('truetype');
+    src: url('./font_4638676_qcd32sirb9c.woff2') format('woff2'),
+         url('./font_4638676_qcd32sirb9c.woff') format('woff'),
+         url('./font_4638676_qcd32sirb9c.ttf') format('truetype');
   }
   
   .iconfont {
@@ -25,7 +25,10 @@
     content: "\e648";
   }
   
-  .icon-biji {
+  .icon-biji:before {
     content: "\e60e";
   }
   
+  .icon-search:before {
+    content: "\e63d";
+  }
