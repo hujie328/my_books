@@ -1,11 +1,12 @@
 <template>
-  <div class="home">
+  <div class="home_view" @scroll="pageScrollHandle">
+
     <head>
       <nav>
-        <div class="nav_bar_block">
+        <div class="nav_bar_block" :style="{ top: scrollTop }">
           <el-row align="middle" justify="center">
             <!-- 顶部导航 -->
-            <el-col :xl="9" :lg="9" :xs="0">
+            <el-col :md="9" :xs="0">
               <div class="bars_list">
                 <div class="bar_item">
                   <i class="iconfont icon-home"></i>
@@ -26,11 +27,12 @@
               </div>
             </el-col>
             <!-- 搜索 -->
-            <el-col :xl="9" :lg="9">
+            <el-col :md="9" :xs="0">
               <div class="seach_box">
                 <div :class="['seach', isExpend ? 'expend' : '']">
                   <i class="iconfont icon-search seach_icon" @click="seachClickHandle"></i>
-                  <input type="text" placeholder="搜索点什么呢" class="seach_input" />
+                  <input @blur="seachBlurHandle" ref="seachInput" v-model="seachValue" type="text" placeholder="搜索点什么呢"
+                    class="seach_input" />
                 </div>
               </div>
             </el-col>
@@ -40,20 +42,45 @@
         </div>
       </nav>
     </head>
-    
-    <router-view />
+    <banner></banner>
+    <div class="router-box">
+      <router-view></router-view>
+    </div>
     <snowflake></snowflake>
   </div>
 </template>
 
 <script setup>
+import 'element-plus/theme-chalk/display.css'
 import snowflake from '@/components/snowflake.vue';
+import banner from '@/components/banner/index.vue';
 
+// 搜索款是否展开
 const isExpend = ref(false)
+// 搜索款的值
+let seachValue = ref('')
+const seachInput = ref(null)
+
+const scrollTop = ref('0px')
+
 
 const seachClickHandle = () => {
   isExpend.value = true
+  seachInput.value.focus()
 }
+
+const seachBlurHandle = () => {
+  if (seachValue.value) return
+  isExpend.value = false
+}
+
+const pageScrollHandle = (event) => {
+  scrollTop.value = `${event.target.scrollTop}px`
+  if(event.target.scrollTop > 500){
+    
+  }
+}
+
 
 </script>
 
@@ -63,9 +90,10 @@ nav {
   display: block;
 }
 
-.home {
+.home_view {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: auto;
 
   &::before {
     content: "";
@@ -85,6 +113,7 @@ nav {
 .nav_bar_block {
   width: 100%;
   padding: 10px;
+  position: relative;
 
   .bars_list {
     display: flex;
@@ -158,5 +187,9 @@ nav {
       }
     }
   }
+}
+
+.router-box {
+  width: 100%;
 }
 </style>

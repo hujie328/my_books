@@ -2,6 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import qiankunBox from '../views/qiankunBox.vue'
 const routes = [
   {
+    path: '/',
+    name: 'home',
+    component: () => import('@/views/home/index.vue')
+  },
+  {
     path: '/editor',
     name: 'editor',
     component: () => import('@/views/editor/editor.vue')
