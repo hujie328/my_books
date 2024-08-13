@@ -1,12 +1,11 @@
 <template>
-  <div class="home_view" @scroll="pageScrollHandle">
-
+  <div class="page_view" @scroll="pageScrollHandle">
     <head>
       <nav>
         <div class="nav_bar_block" :style="{ top: scrollTop }">
           <el-row align="middle" justify="center">
             <!-- 顶部导航 -->
-            <el-col :md="9" :xs="0">
+            <el-col :sm="10" :md="9" :xs="0">
               <div class="bars_list">
                 <div class="bar_item">
                   <i class="iconfont icon-home"></i>
@@ -27,7 +26,7 @@
               </div>
             </el-col>
             <!-- 搜索 -->
-            <el-col :md="9" :xs="0">
+            <el-col :sm="10" :md="9" :xs="0">
               <div class="seach_box">
                 <div :class="['seach', isExpend ? 'expend' : '']">
                   <i class="iconfont icon-search seach_icon" @click="seachClickHandle"></i>
@@ -37,15 +36,17 @@
               </div>
             </el-col>
             <!-- 只有移动端显示 -->
-            <el-col :xs="12" :sm="0"></el-col>
+            <el-col :xs="24" :sm="0">aaa</el-col>
           </el-row>
         </div>
       </nav>
     </head>
-    <banner></banner>
-    <div class="router-box">
-      <router-view></router-view>
-    </div>
+    <el-row class="page_content" align="middle" justify="center">
+      <el-col :sm="20" :md="18" :xs="24">
+        <!-- <banner></banner> -->
+        <router-view></router-view>
+      </el-col>
+    </el-row>
     <snowflake></snowflake>
   </div>
 </template>
@@ -76,8 +77,8 @@ const seachBlurHandle = () => {
 
 const pageScrollHandle = (event) => {
   scrollTop.value = `${event.target.scrollTop}px`
-  if(event.target.scrollTop > 500){
-    
+  if (event.target.scrollTop > 500) {
+
   }
 }
 
@@ -90,11 +91,10 @@ nav {
   display: block;
 }
 
-.home_view {
+.page_view {
   width: 100%;
   height: 100vh;
   overflow: auto;
-
   &::before {
     content: "";
     position: fixed;
@@ -126,6 +126,7 @@ nav {
       align-items: center;
       color: #FFFFFF;
       font-size: 14px;
+      white-space: nowrap;
 
       &:hover {
         color: #b3beb8;
@@ -187,9 +188,5 @@ nav {
       }
     }
   }
-}
-
-.router-box {
-  width: 100%;
 }
 </style>

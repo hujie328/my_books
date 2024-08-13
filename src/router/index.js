@@ -3,8 +3,23 @@ import qiankunBox from '../views/qiankunBox.vue'
 const routes = [
   {
     path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/',
     name: 'home',
-    component: () => import('@/views/home/index.vue')
+    component: () => import('@/views/home/index.vue'),
+    children: [
+      {
+        path: '/home',
+        redirect: '/home/code'
+      },
+      {
+        path: '/home/code',
+        name: 'code',
+        component: () => import('@/views/home/code/index.vue')
+      }
+    ]
   },
   {
     path: '/editor',
