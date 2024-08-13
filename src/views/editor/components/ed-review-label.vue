@@ -1,38 +1,20 @@
 <template>
-  <div
-    class="mark-container"
-    :style="isEditing ? '' : 'pointer-events: none;'"
-    @mousedown="onMouseDown"
-    @mousemove="onMouseMove"
-    @mouseup="onMouseUp"
-  >
+  <div class="mark-container" :style="isEditing ? '' : 'pointer-events: none;'" @mousedown="onMouseDown"
+    @mousemove="onMouseMove" @mouseup="onMouseUp">
     <div :style="currentBoxStyle" class="drag-box" v-if="isDrawing"></div>
 
     <!-- 临时 -->
-    <div
-      v-if="isTemporary"
-      @mousedown.stop
-      @mousemove.stop
-      @mouseup.stop
-      @mouseleave.stop
-    >
+    <div v-if="isTemporary" @mousedown.stop @mousemove.stop @mouseup.stop @mouseleave.stop>
       <div :style="markersObj.style" class="temporaryBox"></div>
-      <div
-        class="temporaryBox_b"
-        :style="{
-          top: markersObj.currentPoint.y - 19 + 'px',
-          left: markersObj.currentPoint.x - 19 + 'px',
-        }"
-      >
+      <div class="temporaryBox_b" :style="{
+    top: markersObj.currentPoint.y - 19 + 'px',
+    left: markersObj.currentPoint.x - 19 + 'px',
+  }">
         <div class="temporary">
           <div class="temporary-name">川</div>
         </div>
         <div class="comment">
-          <input
-            type="text"
-            placeholder="请输入评论"
-            v-model="markersObj.text"
-          />
+          <input type="text" placeholder="请输入评论" v-model="markersObj.text" />
           <button @click.stop="ensureMarker">确定</button>
           <!-- <button @click.stop="$emit('delete-marker', marker.id)">{{marker.id}}删除</button> -->
         </div>
@@ -42,7 +24,7 @@
 </template>
 
 <script setup>
-import { computed, ref, watch, defineEmits, reactive, onMounted } from "vue";
+import { computed, ref, reactive } from "vue";
 
 defineOptions({
   name: "edReviewLabel",
@@ -128,8 +110,7 @@ const currentBoxStyle = computed(() => ({
     pointer-events: none;
   }
 
-  .temporaryBox {
-  }
+  .temporaryBox {}
 
   .temporaryBox_b {
     position: absolute;
