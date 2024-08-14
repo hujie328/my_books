@@ -1,9 +1,6 @@
 <template>
     <div ref="codeMain" class="code_main">
     </div>
-    <div id="previewDiv" style="background-color: #FFFFFF;">
-    </div>
-    <el-button type="primary" @click="togglePreview">测试</el-button>
 </template>
 
 <script setup>
@@ -12,7 +9,6 @@ import { EditorView, basicSetup } from 'codemirror';
 import { EditorState } from '@codemirror/state';
 import { javascript } from '@codemirror/lang-javascript'
 import { markdown } from '@codemirror/lang-markdown'
-import { marked } from 'marked';
 
 const codeMain = ref(null);
 
@@ -42,12 +38,7 @@ onMounted(() => {
     // const updatedCode = editorView.state.doc.toString();
     // console.log(updatedCode);
 });
-const togglePreview = () => {
-    const previewDiv = document.getElementById('previewDiv');
-    const markdownContent = editorView.state.doc.toString();
-    const highlightedContent = marked(markdownContent)
-    previewDiv.innerHTML = highlightedContent;
-};
+
 </script>
 
 <style scoped></style>
