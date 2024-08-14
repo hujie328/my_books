@@ -8,12 +8,15 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@codemirror/highlight": "^0.19.8",
     "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/lang-markdown": "^6.2.5",
     "@element-plus/icons-vue": "^2.3.1",
     "codemirror": "^6.0.1",
     "core-js": "^3.8.3",
     "echarts": "^5.5.1",
     "element-plus": "^2.7.7",
+    "marked": "^14.0.0",
     "qiankun": "^2.10.16",
     "unplugin-icons": "^0.19.1",
     "vue": "^3.2.13",
