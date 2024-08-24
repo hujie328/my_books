@@ -1,5 +1,4 @@
 const { defineConfig } = require('@vue/cli-service')
-
 // Element自动导入
 const AutoImport = require('unplugin-auto-import/webpack').default
 const Components = require('unplugin-vue-components/webpack').default
@@ -14,6 +13,7 @@ const IconsResolver = require('unplugin-icons/resolver').default
 
 module.exports = defineConfig({
   transpileDependencies: true,
+  publicPath: process.env.NODE_ENV === "development" ? '/' : './',
   configureWebpack: {
     plugins: [
       AutoImport({
@@ -37,7 +37,7 @@ module.exports = defineConfig({
       }),
       Icons({
         autoInstall: true,
-      })
+      }),
     ]
   }
 })
