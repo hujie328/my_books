@@ -27,6 +27,11 @@ const routes = [
     component: () => import('@/views/editor/editor.vue')
   },
   {
+    path: '/map',
+    name: 'map',
+    component: () => import('@/views/home/map/index.vue')
+  },
+  {
     path: '/smallapp/:pathMatch(.*)',
     name: 'smallapp',
     component: qiankunBox
