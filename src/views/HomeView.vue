@@ -44,12 +44,12 @@
     </head>
     <el-row class="page_content" align="middle" justify="center">
       <el-col :sm="20" :md="18" :xs="24">
-        <!-- <Banner></Banner> -->
+        <component :is="componentList[acComName]"></component>
+        <Banner></Banner>
         <router-view></router-view>
       </el-col>
     </el-row>
-    <component :is="componentList[acComName]"></component>
-    <!-- <Snowflake></Snowflake> -->
+    <Snowflake></Snowflake>
   </div>
 </template>
 
@@ -58,15 +58,27 @@
 import 'element-plus/theme-chalk/display.css'
 import Snowflake from '@/components/snowflake.vue';
 import Banner from '@/components/banner/index.vue';
+import comA from '@/components/comA.vue';
+import comB from '@/components/comB.vue';
 import { ref } from 'vue';
 
 const componentList = {
-  Snowflake,
-  Banner
+  comA,
+  comB
 }
 
-const acComName = ref('Snowflake')
+let isC = ref(true)
 
+const acComName = ref('comA')
+
+setInterval(() => {
+  if (isC.value) {
+    acComName.value = 'comB'
+  } else {
+    acComName.value = 'comA'
+  }
+  isC.value = !isC.value
+}, 5000)
 
 // 搜索款是否展开
 const isExpend = ref(false)

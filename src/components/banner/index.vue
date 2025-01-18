@@ -13,7 +13,7 @@ const p1t = "欢迎来到静谧森林"
 <style lang="scss" scoped>
 .banner {
     width: 100%;
-    height: 280px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
