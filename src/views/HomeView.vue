@@ -1,5 +1,6 @@
 <template>
   <div class="page_view" @scroll="pageScrollHandle">
+
     <head>
       <nav>
         <div class="nav_bar_block" :style="{ top: scrollTop }">
@@ -95,6 +96,7 @@ nav {
   width: 100%;
   height: 100vh;
   overflow: auto;
+
   &::before {
     content: "";
     position: fixed;

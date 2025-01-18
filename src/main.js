@@ -5,6 +5,3 @@ import '@/common/iconfont/iconfont.css'
 const app = createApp(App)
 
 app.use(router).mount('#app')
-
-
-import "@/qiankun/index.js"

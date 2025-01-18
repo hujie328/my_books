@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import qiankunBox from '../views/qiankunBox.vue'
 const routes = [
   {
     path: '/',
@@ -32,9 +31,9 @@ const routes = [
     component: () => import('@/views/home/map/index.vue')
   },
   {
-    path: '/smallapp/:pathMatch(.*)',
-    name: 'smallapp',
-    component: qiankunBox
+    path: '/recursion',
+    name: 'recursion',
+    component: () => import('@/views/recursion/index.vue')
   }
 ]
 
