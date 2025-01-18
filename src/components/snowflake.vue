@@ -159,7 +159,7 @@ function drawSnow() {
   });
 }
 /* 调用及控制方法 */
-let snow = new snowFall({ maxFlake: 200, flakeSize: 8, fallSpeed: 2 });
+let snow = new snowFall({ maxFlake: 100, flakeSize: 8, fallSpeed: 2 });
 onMounted(() => {
   snow.start();
 });
