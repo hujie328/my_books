@@ -44,18 +44,29 @@
     </head>
     <el-row class="page_content" align="middle" justify="center">
       <el-col :sm="20" :md="18" :xs="24">
-        <!-- <banner></banner> -->
+        <!-- <Banner></Banner> -->
         <router-view></router-view>
       </el-col>
     </el-row>
-    <snowflake></snowflake>
+    <component :is="componentList[acComName]"></component>
+    <!-- <Snowflake></Snowflake> -->
   </div>
 </template>
 
 <script setup>
+
 import 'element-plus/theme-chalk/display.css'
-import snowflake from '@/components/snowflake.vue';
-import banner from '@/components/banner/index.vue';
+import Snowflake from '@/components/snowflake.vue';
+import Banner from '@/components/banner/index.vue';
+import { ref } from 'vue';
+
+const componentList = {
+  Snowflake,
+  Banner
+}
+
+const acComName = ref('Snowflake')
+
 
 // 搜索款是否展开
 const isExpend = ref(false)
