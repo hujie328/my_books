@@ -8,9 +8,11 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@codemirror/highlight": "^0.19.8",
-    "@codemirror/lang-javascript": "^6.2.2",
-    "@codemirror/lang-markdown": "^6.2.5",
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.9",
+    "@codemirror/lang-javascript": "^6.2.3",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/theme-one-dark": "^6.1.2",
     "@element-plus/icons-vue": "^2.3.1",
     "codemirror": "^6.0.1",
     "core-js": "^3.8.3",

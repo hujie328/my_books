@@ -3,42 +3,34 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { EditorView, basicSetup } from "codemirror";
+import { ref, onMounted } from "vue";
 import { EditorState } from "@codemirror/state";
-import { javascript } from "@codemirror/lang-javascript";
-import { markdown } from "@codemirror/lang-markdown";
-import { css } from "@codemirror/lang-css";
+import { EditorView, basicSetup } from "codemirror"
 import { html } from "@codemirror/lang-html";
+import { oneDark } from "@codemirror/theme-one-dark";
 
-const codeMain = ref(null);
+const codeMain = ref()
 
 const state = EditorState.create({
-  doc: "const", //这是文本
-  extensions: [basicSetup, javascript(), markdown(), css(), html()],
+  doc: "console.log('Hello World')", // 初始内容
+  extensions: [
+    basicSetup,
+    html({ autoCloseTags: true, matchTags: { bothTags: true } }),
+    oneDark,                        // 应用暗黑主题
+    EditorView.lineWrapping,        // 自动换行
+    EditorView.updateListener.of((update) => {
+    })
+  ]
 });
-let editorView = "";
+
+let editor = null
+
 onMounted(() => {
-  editorView = new EditorView({
-    parent: codeMain.value,
+  editor = new EditorView({
     state,
+    parent: codeMain.value  // 挂载到 DOM 元素
   });
-
-  // 回显代码的示例
-  editorView.dispatch({
-    changes: {
-      from: editorView.state.doc.length,
-      insert: " world!",
-    },
-  });
-  const transaction = editorView.state.update({
-    changes: { from: editorView.state.doc.length, insert: "新的文本" },
-  });
-  editorView.dispatch(transaction);
-
-  // const updatedCode = editorView.state.doc.toString();
-  // console.log(updatedCode);
-});
+})
 </script>
 
 <style scoped></style>
