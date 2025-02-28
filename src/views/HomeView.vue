@@ -1,7 +1,7 @@
 <template>
   <div class="page_view" @scroll="pageScrollHandle">
 
-    <head>
+    <div>
       <nav>
         <div class="nav_bar_block" :style="{ top: scrollTop }">
           <el-row align="middle" justify="center">
@@ -41,7 +41,7 @@
           </el-row>
         </div>
       </nav>
-    </head>
+    </div>
     <el-row class="page_content" align="middle" justify="center">
       <el-col :sm="20" :md="18" :xs="24">
         <component :is="componentList[acComName]"></component>
